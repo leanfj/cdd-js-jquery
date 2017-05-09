@@ -25,6 +25,7 @@ function escreveNoTotal(valor) {
 }
 
 
+// Faz o calculo do valor pela quantidade e retorna a soma total
 function calculaTotalProdutos() {
 
   var produtos = document.getElementsByClassName("produto");
@@ -37,6 +38,7 @@ function calculaTotalProdutos() {
     var preco = textParaFloat(precoEmTexto);
     // Quantidade
     var elementoQuantidade = produtos[posicao].getElementsByClassName("quantidade");
+    // Como quantidade é um input temos que busca um value
     var quantidadeEmTexto = elementoQuantidade[0].value;
     var quantidade = textParaFloat(quantidadeEmTexto);
 
@@ -47,3 +49,23 @@ function calculaTotalProdutos() {
 
   return totalProdutos;
 }
+
+// Calcula o valor relacionado a quantidade de coloca no total
+function quantidadeMudou() {
+  escreveNoTotal(calculaTotalProdutos());
+}
+
+
+function quandoDocCarregar() {
+  var quantidadeEditado = document.getElementsByClassName("quantidade");
+
+  for (var i = 0; i < quantidadeEditado.length; i++) {
+
+    // onchange usado para quando o valor mudar chamar as functions para calcular e colocar o valor no total
+    quantidadeEditado[i].onchange = quantidadeMudou;
+  }
+}
+
+
+
+window.onload = quandoDocCarregar;
