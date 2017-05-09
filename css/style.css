@@ -1,0 +1,24 @@
+body {
+  font-family: 'Roboto Mono', monospace;
+}
+table {
+  border-collapse: collapse;
+  width: 960px;
+  margin: 0 auto;
+}
+table, th, td {
+  border: 1px solid #000;
+}
+th, td {
+  padding: 15px;
+}
+th {
+  height: 50px;
+  text-align: center;
+  background-color: #3498db;
+  color: #fff;
+}
+td {
+  text-align: right;
+  height: 20px;
+}
