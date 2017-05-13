@@ -7,8 +7,10 @@ function textParaFloat(texto) {
 
 // Retorna o valor de total ja em float
 function lerTotal() {
-  var total = document.getElementById("total");
-  return textParaFloat(total.innerHTML);
+  // var total = document.getElementById("total");
+  var total = $("total").text();
+  // return textParaFloat(total.innerHTML);
+  return textParaFloat(total);
 }
 
 // Retorna o valor transofomado em string
@@ -20,8 +22,29 @@ function floatParaText(valor) {
 
 // Inserir no html do id total o valor
 function escreveNoTotal(valor) {
-  var total = document.getElementById("total");
-  total.innerHTML = floatParaText(valor);
+  // var total = document.getElementById("total");
+  // total.innerHTML = floatParaText(valor);
+  var texto = floatParaText(valor);
+  $("#total").text(texto);
+}
+
+// Compatibilidade com IE 8
+
+if (document.getElementsByClassName === undefined) {
+  document.getElementsByClassName = function (className) {
+    var todosElementos = getElementsByTagName("*");
+    var resultados = [];
+
+    var elemento;
+
+    for (var i = 0; (elemento = todosElementos[i]) != null; i++) {
+      var elementoClass = elemento.className;
+      if (elemento && elementoClass.indexOf(className) != -1) {
+        resultados.push(elemento);
+      }
+    }
+    return resultados;
+  }
 }
 
 
