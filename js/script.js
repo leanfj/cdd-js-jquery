@@ -8,7 +8,7 @@ function textParaFloat(texto) {
 // Retorna o valor de total ja em float
 function lerTotal() {
   // var total = document.getElementById("total");
-  var total = $("total").text();
+  var total = $("#total").text();
   // return textParaFloat(total.innerHTML);
   return textParaFloat(total);
 }
@@ -51,24 +51,32 @@ if (document.getElementsByClassName === undefined) {
 // Faz o calculo do valor pela quantidade e retorna a soma total
 function calculaTotalProdutos() {
 
-  var produtos = document.getElementsByClassName("produto");
+  // var produtos = document.getElementsByClassName("produto");
+  var produtos = $(".produto");
+
   var totalProdutos = 0;
 
   for (var posicao = 0; posicao < produtos.length; posicao++) {
     // Preco
-    var elementoPreco = produtos[posicao].getElementsByClassName("preco");
-    var precoEmTexto = elementoPreco[0].innerHTML;
-    var preco = textParaFloat(precoEmTexto);
+    // var elementoPreco = produtos[posicao].getElementsByClassName("preco");
+    // var precoEmTexto = elementoPreco[0].innerHTML;
+    // var preco = textParaFloat(precoEmTexto);
     // Quantidade
-    var elementoQuantidade = produtos[posicao].getElementsByClassName("quantidade");
+    // var elementoQuantidade = produtos[posicao].getElementsByClassName("quantidade");
     // Como quantidade é um input temos que busca um value
-    var quantidadeEmTexto = elementoQuantidade[0].value;
-    var quantidade = textParaFloat(quantidadeEmTexto);
+    // var quantidadeEmTexto = elementoQuantidade[0].value;
+    // var quantidade = textParaFloat(quantidadeEmTexto);
 
-    var subTotal = quantidade * preco;
-    totalProdutos = totalProdutos + subTotal;
+    // var subTotal = quantidade * preco;
+    // totalProdutos = totalProdutos + subTotal;
+
+    var $produto = $(produtos[posicao]);
+    var quantidade = textParaFloat($produto.find('.quantidade').val());
+    var preco = textParaFloat($produto.find('.preco').text());
+    totalProdutos += quantidade * preco;
 
   }
+console.log(produtos);
 
   return totalProdutos;
 }
