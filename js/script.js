@@ -52,11 +52,11 @@ if (document.getElementsByClassName === undefined) {
 function calculaTotalProdutos() {
 
   // var produtos = document.getElementsByClassName("produto");
-  var produtos = $(".produto");
+  // var produtos = $(".produto");
 
   var totalProdutos = 0;
 
-  for (var posicao = 0; posicao < produtos.length; posicao++) {
+  // for (var posicao = 0; posicao < produtos.length; posicao++) {
     // Preco
     // var elementoPreco = produtos[posicao].getElementsByClassName("preco");
     // var precoEmTexto = elementoPreco[0].innerHTML;
@@ -69,14 +69,24 @@ function calculaTotalProdutos() {
 
     // var subTotal = quantidade * preco;
     // totalProdutos = totalProdutos + subTotal;
+  //
+  //   var $produto = $(produtos[posicao]);
+  //   var quantidade = textParaFloat($produto.find('.quantidade').val());
+  //   var preco = textParaFloat($produto.find('.preco').text());
+  //   totalProdutos += quantidade * preco;
+  //
+  // }
 
-    var $produto = $(produtos[posicao]);
-    var quantidade = textParaFloat($produto.find('.quantidade').val());
-    var preco = textParaFloat($produto.find('.preco').text());
+  // EACH executa a function para elemento encontrado
+  $(".produto").each(function(posicao, produto) {
+    var $produto = $(produto);
+    var quantidade = textParaFloat($produto.find(".quantidade").val());
+    var preco = textParaFloat($produto.find(".preco").text());
+
     totalProdutos += quantidade * preco;
+  });
 
-  }
-console.log(produtos);
+// console.log(produtos);
 
   return totalProdutos;
 }
