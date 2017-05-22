@@ -92,21 +92,35 @@ function calculaTotalProdutos() {
 }
 
 // Calcula o valor relacionado a quantidade de coloca no total
-function quantidadeMudou() {
-  escreveNoTotal(calculaTotalProdutos());
-}
+// function quantidadeMudou() {
+//   escreveNoTotal(calculaTotalProdutos());
+// }
 
 
-function quandoDocCarregar() {
-  var quantidadeEditado = document.getElementsByClassName("quantidade");
+// function quandoDocCarregar() {
+  // var quantidadeEditado = document.getElementsByClassName("quantidade");
+  //
+  // for (var i = 0; i < quantidadeEditado.length; i++) {
+  //
+  //   // onchange usado para quando o valor mudar chamar as functions para calcular e colocar o valor no total
+  //   // quantidadeEditado[i].onchange = quantidadeMudou;
+  //   quantidadeEditado[i].onchange = function() {
+  //     escreveNoTotal(calculaTotalProdutos());
+  //   }
+  // }
+  // Function de escrita no campo total com o calculo dos valores pasados ao envento change dos itens com a class quantidade
+//   $(".quantidade").change(function() {
+//     escreveNoTotal(calculaTotalProdutos());
+//   });
+// }
 
-  for (var i = 0; i < quantidadeEditado.length; i++) {
+// Function do jquery que executa assim que a pagina é carregada
+$(function() {
+  $(".quantidade").change(function(){
+    escreveNoTotal(calculaTotalProdutos());
+  });
+});
 
-    // onchange usado para quando o valor mudar chamar as functions para calcular e colocar o valor no total
-    quantidadeEditado[i].onchange = quantidadeMudou;
-  }
-}
 
 
-
-window.onload = quandoDocCarregar;
+// window.onload = quandoDocCarregar;
