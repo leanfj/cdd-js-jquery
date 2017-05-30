@@ -1,0 +1,40 @@
+/*RESET*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/*GERAL*/
+body {
+  font-family: sans-serif;
+  color: #ecf0f1;
+}
+.container {
+  width: 960px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #34495e;
+
+}
+/*MAIN*/
+
+.container h1 {
+  padding: 10px;
+}
+.container h2 {
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.container input {
+  width: 60%;
+  margin: 20px auto;
+  line-height: 2;
+  background: none;
+  border: 1px solid #ecf0f1;
+  color: #ecf0f1;
+  text-align: center;
+  font-size: 20px;
+}
