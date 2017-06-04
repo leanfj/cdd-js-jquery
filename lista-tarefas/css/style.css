@@ -38,15 +38,15 @@ body {
   text-align: center;
   font-size: 20px;
 }
-#tarefa-item {
+.tarefa-item {
   display: flex;
   justify-content: space-around;
-  align-items: center;  
+  align-items: center;
   line-height: 2em;
   width: 60%;
   margin: 0 auto;
 }
-#tarefa-item:nth-child(2n+1){
+.tarefa-item:nth-child(2n+1){
   background-color: #68819b;
 }
 .tarefa-texto {
