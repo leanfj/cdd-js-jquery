@@ -38,3 +38,21 @@ body {
   text-align: center;
   font-size: 20px;
 }
+#tarefa-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;  
+  line-height: 2em;
+  width: 60%;
+  margin: 0 auto;
+}
+#tarefa-item:nth-child(2n+1){
+  background-color: #68819b;
+}
+.tarefa-texto {
+  flex: 1;
+}
+.tarefa-delete {
+  cursor: pointer;
+  margin-right: 5px;
+}
