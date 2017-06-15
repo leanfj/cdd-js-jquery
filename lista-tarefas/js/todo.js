@@ -8,13 +8,15 @@ $(document).ready(
     function onTarefaDeleteClick () {
       // console.log("Cliquei na lixeira!!");
       // Metodo Parent utilizado para selecionar o elemento pai
-      console.log($(this).parent('.tarefa-item').text().trim());
+      // console.log($(this).parent('.tarefa-item').text().trim());
 
       // Metodo hide utilizado para esconder o elemento, parametro slow para aplicar efeito. Metodo remove elemina o elemento do DOM
       // Primeiro this se refere ao elemento tarefa-delete associado ao evento onde a função vai ser chamada
       // O segundo thi se refere ao elemento tarefa-item
-      $(this).parent('.tarefa-item').hide('slow', function () {
-        $(this).remove();
+      $(this).parent('.tarefa-item')
+        .off('click')
+        .hide('slow', function () {
+          $(this).remove();
       });
     }
 
@@ -43,14 +45,26 @@ $(document).ready(
       if(event.which === 13) {
         salvaEdicaoPendente($ultimoCLick);
         $ultimoCLick = undefined;
-        console.log($ultimoCLick);
       }
     }
 
-    function salvaEdicaoPendente(tarefa) {
+    function salvaEdicaoPendente($tarefa) {
       console.log("Salvando");
+      // Pega o valor do input com o novo texto
+      var texto = $tarefa.children('.tarefa-edit').val();
+      // Apaga todo o html
+      $tarefa.empty();
+      // Inclui o hmtl no elemento
+      $tarefa.append("<div class='tarefa-texto'>" + texto + "</div>")
+             .append("<div class='tarefa-delete fa fa-trash-o'></div>")
+             .append("<div class='clear'></div>");
+
+      // Recria os eventos que podem ser chamados
+      $(".tarefa-delete").click(onTarefaDeleteClick);
+      $tarefa.click(onTarefaItemClick);
     }
 
     $('.tarefa-item').click(onTarefaItemClick);
+
   })
 );
