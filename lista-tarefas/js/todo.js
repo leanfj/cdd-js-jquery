@@ -2,6 +2,9 @@
 $(document).ready(
 
   $(function(){
+    // Armazena tarefa que está sendo editada
+    var $ultimoCLick;
+
     function onTarefaDeleteClick () {
       // console.log("Cliquei na lixeira!!");
       // Metodo Parent utilizado para selecionar o elemento pai
@@ -14,10 +17,38 @@ $(document).ready(
         $(this).remove();
       });
     }
+
     $(".tarefa-delete").click(onTarefaDeleteClick);
 
     function onTarefaItemClick() {
-      console.log("Clique para editar");
+      // Verifica se o item em edição é o mesmo e evit o a rechamada da function
+      if (!$(this).is($ultimoCLick)) {
+        if($ultimoCLick !== undefined) {
+          salvaEdicaoPendente($ultimoCLick);
+        }
+        $ultimoCLick = $(this);
+        // Pega o texto dentro do elemento tarefa-texto
+        var texto = $ultimoCLick.children('.tarefa-texto').text();
+        // Novo elemento Ipunt que vai conter o texto
+        var novoElementoInput = "<input type='text' " + "class='tarefa-edit' value='" + texto + "'>";
+        // Coloca o novo conteudo digitado no input dentro do elemento de texto
+        $ultimoCLick.html(novoElementoInput);
+        // Function para salvar edição
+        $(".tarefa-edit").keydown(onTarefaEditKeydown);
+      }
+    }
+
+    // Verifica a tecla enter para salvar
+    function onTarefaEditKeydown(event) {
+      if(event.which === 13) {
+        salvaEdicaoPendente($ultimoCLick);
+        $ultimoCLick = undefined;
+        console.log($ultimoCLick);
+      }
+    }
+
+    function salvaEdicaoPendente(tarefa) {
+      console.log("Salvando");
     }
 
     $('.tarefa-item').click(onTarefaItemClick);
