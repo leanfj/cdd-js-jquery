@@ -55,9 +55,12 @@ $(document).ready(
       // Apaga todo o html
       $tarefa.empty();
       // Inclui o hmtl no elemento
-      $tarefa.append("<div class='tarefa-texto'>" + texto + "</div>")
-             .append("<div class='tarefa-delete fa fa-trash-o'></div>")
-             .append("<div class='clear'></div>");
+      $tarefa.append($("<div />").addClass("tarefa-texto").text(texto))
+            .append($("<div />").addClass("tarefa-delete fa fa-trash-o"))
+            .append($("<div />").addClass("clear"));
+      // $tarefa.append("<div class='tarefa-texto'>" + texto + "</div>")
+      //        .append("<div class='tarefa-delete fa fa-trash-o'></div>")
+      //        .append("<div class='clear'></div>");
 
       // Recria os eventos que podem ser chamados
       $(".tarefa-delete").click(onTarefaDeleteClick);
