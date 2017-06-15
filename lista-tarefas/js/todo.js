@@ -63,7 +63,7 @@ $(document).ready(
 
     // Verifica se foi clicado o enter
     function onTarefaKeyDown(event) {
-      if (event.which === 13) {
+      if (event.which === 13 && $("#tarefa").val() !== "") {
         addTarefa($("#tarefa").val());
         $("#tarefa").val("");
       }
