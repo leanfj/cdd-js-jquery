@@ -5,6 +5,8 @@ $(document).ready(
     // Armazena tarefa que está sendo editada
     var $ultimoCLick;
 
+
+    // Function para deletar tarefa
     function onTarefaDeleteClick () {
       // console.log("Cliquei na lixeira!!");
       // Metodo Parent utilizado para selecionar o elemento pai
@@ -20,8 +22,7 @@ $(document).ready(
       });
     }
 
-    $(".tarefa-delete").click(onTarefaDeleteClick);
-
+    // Functio para edição de tarefa
     function onTarefaItemClick() {
       // Verifica se o item em edição é o mesmo e evit o a rechamada da function
       if (!$(this).is($ultimoCLick)) {
@@ -59,6 +60,7 @@ $(document).ready(
       $(".tarefa-delete").click(onTarefaDeleteClick);
       $(".tarefa-item").click(onTarefaItemClick);
     }
+
     // Verifica se foi clicado o enter
     function onTarefaKeyDown(event) {
       if (event.which === 13) {
@@ -66,8 +68,6 @@ $(document).ready(
         $("#tarefa").val("");
       }
     }
-    // Cria o evento de keydown dentro do input de para nova tarefa
-    $("#tarefa").keydown(onTarefaKeyDown);
 
     // Salava edição de tarefa
     function salvaEdicaoPendente($tarefa) {
@@ -89,8 +89,14 @@ $(document).ready(
       $tarefa.click(onTarefaItemClick);
     }
 
+
+
+    // Cria evento de click para entra da edição de tarefa
     $('.tarefa-item').click(onTarefaItemClick);
-    // $('#tarefa').keydown(onTarefaKeydown);
+    // Cria o evento de keydown dentro do input de para nova tarefa
+    $("#tarefa").keydown(onTarefaKeyDown);
+    // Cria evento de click para deletar tarefa
+    $(".tarefa-delete").click(onTarefaDeleteClick);
 
   })
 );
