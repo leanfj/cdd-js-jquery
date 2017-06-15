@@ -48,6 +48,28 @@ $(document).ready(
       }
     }
 
+    // Inclui nova tarefa
+    function addTarefa(texto) {
+      var $tarefa = $("<div />")
+                    .addClass("tarefa-item")
+                    .append($("<div />").addClass("tarefa-texto").text(texto))
+                    .append($("<div />").addClass("tarefa-delete fa fa-trash-o"))
+                    .append($("<div />").addClass("clear"));
+      $("#tarefa-lista").append($tarefa);
+      $(".tarefa-delete").click(onTarefaDeleteClick);
+      $(".tarefa-item").click(onTarefaItemClick);
+    }
+    // Verifica se foi clicado o enter
+    function onTarefaKeyDown(event) {
+      if (event.which === 13) {
+        addTarefa($("#tarefa").val());
+        $("#tarefa").val("");
+      }
+    }
+    // Cria o evento de keydown dentro do input de para nova tarefa
+    $("#tarefa").keydown(onTarefaKeyDown);
+
+    // Salava edição de tarefa
     function salvaEdicaoPendente($tarefa) {
       console.log("Salvando");
       // Pega o valor do input com o novo texto
@@ -68,6 +90,7 @@ $(document).ready(
     }
 
     $('.tarefa-item').click(onTarefaItemClick);
+    // $('#tarefa').keydown(onTarefaKeydown);
 
   })
 );
