@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Consulta Cep | Rastreio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="cep">
+      <label for="cep__input" class="cep__label">CEP:</label>
+      <input type="text" name="cep" value="" id="cep__input">
+      <button type="button" name="button" id="cep__btn">Consulta Cep</button>
+    </div>
+    <div id="resposta__cep">
+
+    </div>
+    <div class="rastreio">
+      <label for="rastreio__input" class="rastreio__label">RASTREIO:</label>
+      <input type="text" name="rastreio" value="" id="rastreio__input">
+      <button type="button" name="button" id="rastreio__btn">Consulta rastreio</button>
+    </div>
+    <div id="resposta__rastreio">
+
+    </div>
+    <!-- jquery -->
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+    <!-- moment -->
+    <script src="js/moment.js" charset="utf-8"></script>
+    <!-- javascript -->
+    <script src="js/consulta.js" charset="utf-8"></script>
+  </div>
+</body>
+</html>
