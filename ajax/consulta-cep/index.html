@@ -5,31 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Consulta Cep | Rastreio</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container">
-    <div class="cep">
-      <label for="cep__input" class="cep__label">CEP:</label>
-      <input type="text" name="cep" value="" id="cep__input">
-      <button type="button" name="button" id="cep__btn">Consulta Cep</button>
-    </div>
-    <div id="resposta__cep">
+    <div class="row">
+      <form class="col-md-6 col-sm-12">
+        <div class="cep form-group">
+          <label for="cep__input" class="cep__label">CEP:</label>
+          <input type="text" name="cep" value="" class="form-control" id="cep__input">
+          <span id="helpBlock" class="help-block">Informe o cep Ex.: 21236060</span>
+        </div>
+        <div class="form-group">
+          <button type="button" name="button" id="cep__btn" class="btn btn-primary">Consulta Cep</button>
+        </div>
+        <div class="jumbotron">
+          <div id="resposta__cep" class="">
 
-    </div>
-    <div class="rastreio">
-      <label for="rastreio__input" class="rastreio__label">RASTREIO:</label>
-      <input type="text" name="rastreio" value="" id="rastreio__input">
-      <button type="button" name="button" id="rastreio__btn">Consulta rastreio</button>
-    </div>
-    <div id="resposta__rastreio">
+          </div>
+        </div>
+      </form>
+      <form class="col-md-6 col-sm-12">
+        <div class="rastreio form-group">
+          <label for="rastreio__input" class="rastreio__label">RASTREIO:</label>
+          <input type="text" name="rastreio" value="" class="form-control" id="rastreio__input">
+          <span id="helpBlock" class="help-block">Informe o código de rastreio Ex.: OC118933500BR</span>
+        </div>
+        <div class="form-group">
+          <button type="button" name="button" id="rastreio__btn" class="btn btn-primary">Consulta rastreio</button>
+        </div>
+        <div class="jumbotron">
+          <div id="resposta__rastreio" class="">
 
+          </div>
+        </div>
+      </form>
     </div>
     <!-- jquery -->
     <script
     src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
     crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <script src="assets/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <!-- moment -->
     <script src="js/moment.js" charset="utf-8"></script>
     <!-- javascript -->
