@@ -1,7 +1,7 @@
 
-var urlServicoCep = "http://api.postmon.com.br/v1/cep/";
+var urlServicoCep = "https://api.postmon.com.br/v1/cep/";
 
-var urlServicoRastreio = "http://api.postmon.com.br/v1/rastreio/ect/";
+var urlServicoRastreio = "https://api.postmon.com.br/v1/rastreio/ect/";
 
 var respostaCep = $('#resposta__cep');
 
