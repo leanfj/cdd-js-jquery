@@ -1,3 +1,6 @@
-#resposta__cep {
-
+.jumbotron-sucess {
+  background-color: #cffbde;
+}
+.jumbotron-error {
+  background-color: #f3c4c4
 }
