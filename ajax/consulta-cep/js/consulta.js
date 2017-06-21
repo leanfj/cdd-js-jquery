@@ -15,7 +15,8 @@ function onCepDone(data) {
 }
 
 function onCepError(error) {
-  var errorTextCep = "<p>Erro: " + error.statusText + "</p>";
+  var errorTextCep = "Erro: " + error.statusText;
+  console.log(errorTextCep);
   respostaCep.append(errorTextCep);
   $('#jumbotron__cep').addClass("jumbotron-error");
 }
@@ -35,7 +36,7 @@ function onRastreioDone(data) {
 }
 
 function onRastreioError(error) {
-  var errorTextRastreio = "<p>Erro: " + error.statusText + "</p>";
+  var errorTextRastreio = "Erro: " + error.statusText;
   respostaRastreio.append(errorTextRastreio);
   $('#jumbotron__rastreio').addClass("jumbotron-error");
 }

@@ -11,7 +11,8 @@ function onCepDone(data) {
 }
 
 function onCepError(error) {
-  console.log("Erro: " + error.statusText);
+  var logError = "Erro: " + error.statusText;
+  console.log(logError);
 }
 
 $.getJSON(consulta).done(onCepDone).fail(onCepError);
