@@ -56,3 +56,6 @@ body {
   cursor: pointer;
   margin-right: 5px;
 }
+.tarefa-id {
+  visibility: hidden;
+}

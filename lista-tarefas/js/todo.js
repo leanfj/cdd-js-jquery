@@ -2,11 +2,18 @@
 $(document).ready(
 
   $(function(){
+
+
+    var meuLogin = "leanfjdev@gmail.com";
+    var server = "http://livro-capitulo07.herokuapp.com"
+
+
+
     // Armazena tarefa que está sendo editada
     var $ultimoCLick;
 
 
-    // Function para deletar tarefa
+    //------------Function para deletar tarefa
     function onTarefaDeleteClick () {
       // console.log("Cliquei na lixeira!!");
       // Metodo Parent utilizado para selecionar o elemento pai
@@ -22,7 +29,7 @@ $(document).ready(
       });
     }
 
-    // Functio para edição de tarefa
+    //------------Functio para edição de tarefa
     function onTarefaItemClick() {
       // Verifica se o item em edição é o mesmo e evit o a rechamada da function
       if (!$(this).is($ultimoCLick)) {
@@ -41,7 +48,7 @@ $(document).ready(
       }
     }
 
-    // Verifica a tecla enter para salvar
+    //------------Verifica a tecla enter para salvar
     function onTarefaEditKeydown(event) {
       if(event.which === 13) {
         salvaEdicaoPendente($ultimoCLick);
@@ -49,8 +56,11 @@ $(document).ready(
       }
     }
 
-    // Inclui nova tarefa
-    function addTarefa(texto) {
+    //------------Inclui nova tarefa
+    function addTarefa(texto, id) {
+      // verifica se ID recebeu um valor
+      id = id || 0;
+
       var $tarefa = $("<div />")
                     .addClass("tarefa-item")
                     .append($("<div />").addClass("tarefa-texto").text(texto))
@@ -61,7 +71,7 @@ $(document).ready(
       $(".tarefa-item").click(onTarefaItemClick);
     }
 
-    // Verifica se foi clicado o enter
+    //------------Verifica se foi clicado o enter
     function onTarefaKeyDown(event) {
       if (event.which === 13 && $("#tarefa").val() !== "") {
         addTarefa($("#tarefa").val());
@@ -69,7 +79,7 @@ $(document).ready(
       }
     }
 
-    // Salava edição de tarefa
+    //------------Salava edição de tarefa
     function salvaEdicaoPendente($tarefa) {
       console.log("Salvando");
       // Pega o valor do input com o novo texto
@@ -93,10 +103,21 @@ $(document).ready(
 
     // Cria evento de click para entra da edição de tarefa
     $('.tarefa-item').click(onTarefaItemClick);
+
     // Cria o evento de keydown dentro do input de para nova tarefa
     $("#tarefa").keydown(onTarefaKeyDown);
+
     // Cria evento de click para deletar tarefa
     $(".tarefa-delete").click(onTarefaDeleteClick);
 
-  })
+    function loadTarefas () {
+      // Zera todo o conteudo da DIV
+      $("#tarefa").empty();
+
+      // Chamada AJAX
+
+    }
+
+
+  });
 );

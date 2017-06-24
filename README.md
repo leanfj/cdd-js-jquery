@@ -16,7 +16,8 @@ Projeto 02
 
 Informações:
 
-...
+Utilizando Ajax para carregar dados.
+
 
 Projeto 03
 
@@ -31,4 +32,3 @@ Manipulação de dados recebidos em JSON nas consultas para formatação.
 Utilização de biblioteca [momentjs](https://github.com/moment/moment/) para manipulação de datas para exibição e ordenação de informações de rastreio.
 
 Estilos de CSS utilizando framework Bootstrap
-
