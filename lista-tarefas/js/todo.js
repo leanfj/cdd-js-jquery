@@ -4,7 +4,7 @@ $(document).ready(
   $(function () {
 
     var meuLogin = "leanfjdev@gmail.com";
-    var server = "http://livro-capitulo07.herokuapp.com"
+    var server = "https://livro-capitulo07.herokuapp.com"
 
     // Armazena tarefa que está sendo editada
     var $ultimoCLick;
