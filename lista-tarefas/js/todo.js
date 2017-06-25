@@ -1,17 +1,18 @@
 // Associa eventos assim que o doc é carregado
 $(document).ready(
 
-  $(function(){
-
+  $(function () {
 
     var meuLogin = "leanfjdev@gmail.com";
     var server = "http://livro-capitulo07.herokuapp.com"
 
-
-
     // Armazena tarefa que está sendo editada
     var $ultimoCLick;
 
+    //------------Atualiza as tarefas para o servidor
+    function atualizaTarefas (text, id) {
+      $.post(server + "/tarefa", {tarefa_id: id, texto: text});
+    }
 
     //------------Function para deletar tarefa
     function onTarefaDeleteClick () {
@@ -38,9 +39,12 @@ $(document).ready(
         }
         $ultimoCLick = $(this);
         // Pega o texto dentro do elemento tarefa-texto
-        var texto = $ultimoCLick.children('.tarefa-texto').text();
+        var text = $ultimoCLick.children('.tarefa-texto').text();
+        // Pega o identificado de ID da tarefa
+        var id = $ultimoCLick.children('.tarefa-id').text();
         // Novo elemento Ipunt que vai conter o texto
-        var novoElementoInput = "<input type='text' " + "class='tarefa-edit' value='" + texto + "'>";
+        var novoElementoInput = "<div class='tarefa-id'>" + id + "</div>" + "<input type='text' " + "class='tarefa-edit' value='" + text + "'>";
+
         // Coloca o novo conteudo digitado no input dentro do elemento de texto
         $ultimoCLick.html(novoElementoInput);
         // Function para salvar edição
@@ -63,6 +67,7 @@ $(document).ready(
 
       var $tarefa = $("<div />")
                     .addClass("tarefa-item")
+                    .append($("<div />").addClass("tarefa-id").text(id))
                     .append($("<div />").addClass("tarefa-texto").text(texto))
                     .append($("<div />").addClass("tarefa-delete fa fa-trash-o"))
                     .append($("<div />").addClass("clear"));
@@ -79,28 +84,49 @@ $(document).ready(
       }
     }
 
-    //------------Salava edição de tarefa
+    //------------Salva edição de tarefa
     function salvaEdicaoPendente($tarefa) {
       console.log("Salvando");
       // Pega o valor do input com o novo texto
-      var texto = $tarefa.children('.tarefa-edit').val();
+      var text = $tarefa.children('.tarefa-edit').val();
+      var id = $tarefa.children('.tarefa-id').text();
       // Apaga todo o html
       $tarefa.empty();
       // Inclui o hmtl no elemento
-      $tarefa.append($("<div />").addClass("tarefa-texto").text(texto))
+      $tarefa.append($("<div />").addClass("tarefa-id").text(id))
+            .append($("<div />").addClass("tarefa-texto").text(text))
             .append($("<div />").addClass("tarefa-delete fa fa-trash-o"))
             .append($("<div />").addClass("clear"));
       // $tarefa.append("<div class='tarefa-texto'>" + texto + "</div>")
       //        .append("<div class='tarefa-delete fa fa-trash-o'></div>")
       //        .append("<div class='clear'></div>");
 
+      atualizaTarefas(text, id);
+
+
       // Recria os eventos que podem ser chamados
       $(".tarefa-delete").click(onTarefaDeleteClick);
+
       $tarefa.click(onTarefaItemClick);
     }
 
 
+    //------------Carrega tarefa do servidor
+    function carregaTarefas () {
+      // Zera todo o conteudo da DIV
+      $("#tarefa-lista").empty();
 
+      // Chamada AJAX
+      $.getJSON(server + "/tarefas", {usuario: meuLogin})
+        .done(function(data) {
+          console.log("data: ", data);
+          for(var tarefa = 0; tarefa < data.length; tarefa++) {
+            addTarefa(data[tarefa].texto, data[tarefa].id);
+          }
+        });
+    }
+    carregaTarefas();
+    
     // Cria evento de click para entra da edição de tarefa
     $('.tarefa-item').click(onTarefaItemClick);
 
@@ -109,15 +135,5 @@ $(document).ready(
 
     // Cria evento de click para deletar tarefa
     $(".tarefa-delete").click(onTarefaDeleteClick);
-
-    function loadTarefas () {
-      // Zera todo o conteudo da DIV
-      $("#tarefa").empty();
-
-      // Chamada AJAX
-
-    }
-
-
-  });
+  })
 );
