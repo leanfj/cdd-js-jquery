@@ -74,6 +74,12 @@ $(document).ready(
       $("#tarefa-lista").append($tarefa);
       $(".tarefa-delete").click(onTarefaDeleteClick);
       $(".tarefa-item").click(onTarefaItemClick);
+
+      if(id === 0) {
+        var div = $($tarefa.children(".tarefa-id"));
+        console.log("id", div);
+        novaTarefa(texto, $(div));
+      }
     }
 
     //------------Verifica se foi clicado o enter
@@ -110,7 +116,6 @@ $(document).ready(
       $tarefa.click(onTarefaItemClick);
     }
 
-
     //------------Carrega tarefa do servidor
     function carregaTarefas () {
       // Zera todo o conteudo da DIV
@@ -126,7 +131,20 @@ $(document).ready(
         });
     }
     carregaTarefas();
-    
+
+    //------------Adciona novas tarefas
+    function novaTarefa (text, $div) {
+      $.post(server + "/tarefa",
+        {
+        usuario: meuLogin,
+        texto: text,
+        _method: "PUT"
+        })
+        .done(function(data) {
+          $div.text(data.id);
+        });
+    }
+
     // Cria evento de click para entra da edição de tarefa
     $('.tarefa-item').click(onTarefaItemClick);
 
