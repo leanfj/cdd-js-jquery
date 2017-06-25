@@ -24,10 +24,10 @@ Implementação de CRUD na lista de tarefas.
 
 Métodos HTTP implementados:
 
-..* GET para ler informações do servidor
-..* POST para atualização
-..* PUT para incluir
-..* DELETE para excluir
+  * GET para ler informações do servidor
+  * POST para atualização
+  * PUT para incluir
+  * DELETE para excluir
 
 
 ## Projeto 03
