@@ -2,7 +2,7 @@
 
 Repositório para conclusão prática do livro da Casa do Código - Dominando JavaScript com Jquery
 
-Projeto 01
+## Projeto 01
 
 [Carrinho de compras](https://leanfj.github.io/cdd-js-jquery/loja/index.html)
 
@@ -10,7 +10,7 @@ Informações:
 
 ...
 
-Projeto 02
+## Projeto 02
 
 [Lista de tarefas](https://leanfj.github.io/cdd-js-jquery/lista-tarefas/)
 
@@ -18,8 +18,19 @@ Informações:
 
 Utilizando Ajax para carregar dados.
 
+Introdução a arquitetura REST.
 
-Projeto 03
+Implementação de CRUD na lista de tarefas.
+
+Métodos HTTP implementados:
+
+..* GET para ler informações do servidor
+..* POST para atualização
+..* PUT para incluir
+..* DELETE para excluir
+
+
+## Projeto 03
 
 [Consulta Cep e Rastreio de encomendas](https://leanfj.github.io/cdd-js-jquery/ajax/consulta-cep/)
 
