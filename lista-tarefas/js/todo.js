@@ -26,6 +26,13 @@ $(document).ready(
       $(this).parent('.tarefa-item')
         .off('click')
         .hide('slow', function () {
+          $this = $(this);
+
+          $.post(server + "/tarefa",
+            {usuario: meuLogin,
+            tarefa_id: $this.children(".tarefa-id").text(),
+            _method: "DELETE"});
+
           $(this).remove();
       });
     }
